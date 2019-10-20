@@ -1,0 +1,57 @@
+{
+  // tsconfig.json支持扩展
+  "extends": "./tsconfig.base",
+  // 编译器需要编译的单个文件的列表
+  "files":[
+    "src/demo-01.ts"
+  ],
+  // 编译器需要编译的文件或者目录
+  "include": [
+    "src/*"
+  ],
+  // 编译器需要排除的文件或文件夹，默认排除 node_modules
+  "exclude": [
+    "src/libs"
+  ],
+  // 指定输入文件目录
+  "rootDir": "./",
+  // 指定输出文件目录
+  "outDir": "./out",
+  // 保存文件的时候自动编译
+  "compileOnSave": true,
+  // 增量编译(在上一次的基础上编译，提升编译速度)
+  "incremental": true,
+  // 增量编译文件的存放目录
+  "tsBuildInfoFile": "./src",
+  // 将多个相互依赖的文件，生成一个文件
+  "outFile": "./app.js",
+  // 生成代码的模块标准
+  "module": "amd",
+  // 需要引用类库的声明文件
+  "lib": ["dom","es5"],
+  // 允许编译JS文件(js,jsx)
+  "allowJs": true,
+  // 允许在JS文件中报错(通常与allowJs属性同用)
+  "checkJs": true,
+  // 生成目标文件的sourceMap
+  "sourceMap": true,
+  // 指定声明文件目录，默认是 node_modules/@types
+  "typeRoots": ["node_modules/@types"],
+  // 指定声明文件包存放的位置
+  "types": [],
+  // 删除注释
+  "removeComments": true,
+  // 开启所有严格类型检查
+  "strict": true
+}
+
+
+
+
+
+
+
+
+
+
+
