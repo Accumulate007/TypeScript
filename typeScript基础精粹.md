@@ -310,6 +310,7 @@ x = y
 #### 高级类型
 
 - 交叉类型
+
 用 & 符号，虽然叫交叉类型，但是是取的所有类型的并集。
 ```javascript
 interface DogInterface {
@@ -326,11 +327,12 @@ let pet: DogInterface & CatInterface = {
 }
 ```
 
+- 联合类型
 
+声明的类型并不确定，可以为多个类型中的一个。
+```javascript
+let a: number | string = 1;
 
-
-
-
-
-
-
+// 字符串字面量联合类型
+let b: 'a' | 'b' | 'c' = 'a'
+```
