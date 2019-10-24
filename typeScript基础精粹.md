@@ -37,7 +37,7 @@ Roles['Reporter']   // 3
 
 - **字符串枚举**
 
-字符串枚举只能通过名字取值，无法通过索引取值。
+字符串枚举只能通过名字取值，无法通过索引取值。字符串枚举成员后面的枚举成员必须赋一个初始值。
 ```javascript
 enum Message {
   True = '成功',
@@ -48,15 +48,58 @@ enum Message {
 Message['True']
 ```
 
+- **常量枚举**
+用 const 声明的枚举就是常量枚举，会在编译阶段被移除。当我们不需要一个对象，但是需要一个对象的值的时候，就可以使用常量枚举，这样可以减少编译后的代码。
+```javascript
+const enum Month {
+  Jan,
+  Feb,
+  Oct
+}
+```
 
+- **异构枚举**
+数字和字符串枚举混用。
+```javascript
+enum Answer {
+  N,
+  Y = 'yes'
+}
+```
 
+枚举的一些注意事项
+-1.枚举成员是只读的，不能修改重新赋值
 
+-2.枚举成员的分为 const member 和 computer member。
+  - 常量成员（const member），包括没有初始值的情况、对已有枚举成员的引用、常量表达式，会在编译的时候计算出结果，以常量的形式出现在运行时环境
+  - 计算成员（computer member），需要被计算的枚举成员，不会在编译阶段进行计算，会被保留到程序的执行阶段
 
+-3.在computed member后面出现的枚举成员，一定要赋一个初始值，否则报错
 
+-4.含字符串成员的枚举中不允许使用计算值（computer member），并且在字符串枚举成员后面的枚举成员必须赋一个初始值，否则会报错（见上面的异构类型）
 
+-5.数字枚举中，如果有两个成员有同样索引，那么后面索引会覆盖前面的
+```javascript
+// 枚举成员
+enum Char {
+  // const member 常量枚举，会在编译阶段计算结果，以常量的形式出现在运行时环境
+  a,
+  b = Char.a,
+  c = 1 + 3,
 
+  // computed member 需要被计算的枚举成员，不会在编译阶段进行计算，会被保留到执行阶段
+  d = Math.random(),
+  e = '123'.length,
+  // 在 computed member 后面的枚举成员，一定要赋一个初始值，否则报错
+  f = 1
+}
+console.log(Char)
 
-
+// 枚举 number
+enum number { a = 1, b = 5, c = 4, d }
+console.log(number) //打印出{1: "a", 4: "c", 5: "d", a: 1, b: 5, c: 4, d: 5}
+// b赋初始值为5，c赋初始值为4，按照索引递增，d的索引就是5，索引相同时，后面的值覆盖前面的，所以5对应的 value 就是d
+```
 
 
 
