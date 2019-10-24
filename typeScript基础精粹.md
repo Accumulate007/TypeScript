@@ -7,6 +7,39 @@ let tuple:[number,string] = [5, 'a']
 ```
 需要注意元祖的越界问题，虽然可以越界添加元素，但是仍然是不能越界访问，会报错。
 
+#### symbol类型
+symbol类型可以直接声明为symbol类型，也可以直接赋值。
+```javascript
+let s1:symbol = Symbol()
+```
+
+#### 枚举类型
+枚举类型分为数字枚举和字符串枚举，此外还有异构枚举(不推荐)。
+
+**数字枚举**
+数字枚举既可以通过名字取值，也可以通过索引取值。
+```javascript
+enum Roles {
+  Teacher,
+  Guest,
+  Reporter
+}
+
+// Roles.Guest = 5  枚举成员是只读的，不能在定义后重新修改赋值
+```
+
+**字符串枚举**
+字符串枚举只能通过名字取值，无法通过索引取值。
+```javascript
+enum Message {
+  True = '成功',
+  Fail = '失败'
+}
+
+// 取值
+Message['True']
+```
+
 
 
 
