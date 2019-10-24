@@ -251,8 +251,32 @@ class Log3<T> {
 }
 ```
 
+#### 类型兼容
+当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y。
+```javascript
+X兼容Y：X（目标类型） = Y（源类型）
+```
 
+- 接口兼容
+```javascript
+// 成员少的兼容成员多的
+interface X {
+  a: any;
+  b: any;
+}
 
+interface Y {
+  a: any;
+  b: any;
+  c: any;
+}
+
+let x: X = { a: 1, b: 2 }
+let y: Y = { a: 1, b: 2, c: 3 }
+
+x = y
+// y = x    Error,不兼容
+```
 
 
 
