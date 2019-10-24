@@ -176,6 +176,85 @@ add(1,2,3) // 6
 add('1','2','3') // '123'
 ```
 
+#### 类的修饰符
+- public: 所有人可见（默认）
+- private: 私有属性。私有属性只能在声明的类中访问，在子类或者生成的实例中都不能访问,但是 private 属性可以在实例的方法中被访问到，因为也相当于在类中访问，但是子类的的实例方法肯定是访问不到的。
+- protected 受保护属性。受保护属性只能在声明的类及其子类中访问,但是 protected 属性可以在实例的方法中被访问到。
+- readonly 只读属性。只读属性必须具有初始值，或者在构造函数中初始化,初始化后就不能更改了。
+- static 静态属性。只能通过类的名称调用，不能在实例和构造函数或者子类中的构造函数和实例中访问，但是静态属性是可以继承的，用子类的类名可以访问。
+
+#### 抽象类
+只能被继承，不能被实例化的类。
+```javascript
+abstract class Animal {
+  eat() {
+    console.log('eat')
+  }
+  abstract sleep(): void // 抽象方法，在子类中实现
+}
+```
+
+#### 接口类
+- 类实现接口时，必须实现接口的全部属性，不过类可以定义自己的属性
+- 接口不能约束类的构造函数，只能约束公有成员
+```javascript
+interface Human {
+  // new (name:string):void // 接口不能约束类的构造函数
+  name: string;
+  eat(): void;
+}
+
+class Asian implements Human {
+  constructor (name: string) {
+    this.name = name
+  }
+  name: string
+  // private name: string  // 实现接口时用了私有属性会报错
+  eat() {}
+  sleep(){}
+}
+```
+
+#### 接口继承类
+相当于把类的成员抽象出来，只有类的成员结构，但是没有具体实现。
+```javascript
+class Auto {
+  state = 1
+}
+
+interface AutoInterface extends Auto {
+
+}
+```
+
+#### 泛型
+```javascript
+// 泛型函数
+function log<T>(value: T): T {
+  console.log(value)
+  return value
+}
+
+// 泛型接口
+interface Log<T> {
+  (value: T): T;
+}
+
+let myLog:Log
+
+// 泛型类
+class Log3<T> {
+  run(value: T) {
+    console.log(value)
+    return value
+  }
+}
+```
+
+
+
+
+
 
 
 
