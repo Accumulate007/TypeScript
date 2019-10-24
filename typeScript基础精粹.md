@@ -29,6 +29,10 @@ enum Roles {
 }
 
 // Roles.Guest = 5  枚举成员是只读的，不能在定义后重新修改赋值
+
+// 取值
+Roles[1]    // Teacher
+Roles['Reporter']   // 3
 ```
 
 - **字符串枚举**
