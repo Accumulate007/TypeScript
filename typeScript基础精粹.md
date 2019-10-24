@@ -304,8 +304,27 @@ x = y
 
 3.两个泛型函数如果定义相同，没有指定类型参数的话也是相互兼容的
 
+#### 类型保护机制
+指的是 TypeScript 能够在特定的区块(类型保护区块)中保证变量属于某种特定的类型。可以在此区块中放心地引用此类型的属性，或者调用此类型的方法。
 
+#### 高级类型
 
+- 交叉类型
+用 & 符号，虽然叫交叉类型，但是是取的所有类型的并集。
+```javascript
+interface DogInterface {
+  run(): void
+}
+
+interface CatInterface {
+  jump(): void
+}
+
+let pet: DogInterface & CatInterface = {
+  run() { },
+  jump() { }
+}
+```
 
 
 
