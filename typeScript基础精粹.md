@@ -49,6 +49,7 @@ Message['True']
 ```
 
 - **常量枚举**
+
 用 const 声明的枚举就是常量枚举，会在编译阶段被移除。当我们不需要一个对象，但是需要一个对象的值的时候，就可以使用常量枚举，这样可以减少编译后的代码。
 ```javascript
 const enum Month {
@@ -59,6 +60,7 @@ const enum Month {
 ```
 
 - **异构枚举**
+
 数字和字符串枚举混用。
 ```javascript
 enum Answer {
@@ -112,9 +114,27 @@ interface Names {
   }
 ```
 
+#### 函数类型接口
+```javascript
+interface Add {
+  (x:number, y:number): number
+}
 
+let add:Add = (a, b) => a + b
+```
 
-
+#### 混合接口
+```javascript
+interface Lib {
+  version: string;
+  ():void;
+  doSomething():void;
+}
+// 需要用到类型断言
+let lib: Lib = (() => {}) as Lib;
+lib.version = '1.0'
+lib.doSomething = () => {}
+```
 
 
 
