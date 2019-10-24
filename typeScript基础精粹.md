@@ -158,7 +158,23 @@ function add5(x:number, y?:number) {
 add5(1)
 ```
 
-
+#### 函数重载
+要求定义一系列的函数声明，在类型最宽泛的版本中实现重载， TS 编译器的函数重载会去查询一个重载的列表，并且从最开始的一个进行匹配，如果匹配成功，就直接执行。所以我们要把大概率匹配的定义写在前面。
+```javascript
+function add(...rest: number[]):number
+function add(...rest: string[]):string
+function add(...rest: any[]):any {
+  let first = rest[0]
+  if(typeof first === 'string') {
+    return rest.join('')
+  }
+  if(typeof first === 'number') {
+    return rest.reduce((pre,cur) => pre + cur)
+  }
+}
+add(1,2,3) // 6
+add('1','2','3') // '123'
+```
 
 
 
