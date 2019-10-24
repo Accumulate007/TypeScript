@@ -136,10 +136,27 @@ lib.version = '1.0'
 lib.doSomething = () => {}
 ```
 
+#### 接口继承
+```javascript
+interface Human {
+  name: string;
+  eat(): void;
+}
 
+interface Man extends Human {
+  run(): void
+}
+```
 
+#### 函数可选参数
+可选参数必须位于必选参数之后，即可选参数后面不能再有必选参数。
+```javascript
+function add5(x:number, y?:number) {
+  return y? y + x: x
+}
 
-
+add5(1)
+```
 
 
 
