@@ -1,0 +1,21 @@
+{
+
+  // 编译包含的内容
+  "include": ["./src/*.ts"],
+  // 编译排除的内容
+  "exclude": ["./node_modules/"],
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    // 编译后删除注释
+    "removeComments": true,
+  }
+
+
+  
+
+
+
+
+}
+
